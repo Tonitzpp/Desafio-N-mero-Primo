@@ -9,15 +9,24 @@ def eh_primo(n, divisor = 2):
     
     return eh_primo(n, divisor + 1)
 
-def primos_recursivo(n, atual = 2, primos = None):
-    if primos is None:
-        primos = []
-    if atual > n:
-        return primos
-    if eh_primo(atual):
-        primos.append(atual)
+# def primos_recursivo(n, atual = 2, primos = None):
+#     if primos is None:
+#         primos = []
+#     if atual > n:
+#         return primos
+#     if eh_primo(atual):
+#         primos.append(atual)
 
-    return primos_recursivo(n, atual + 1, primos)
+#     return primos_recursivo(n, atual + 1, primos)
+
+def primos_recursivo(n):
+    if n < 2:
+        return []
+    primos_anteriores = primos_recursivo(n - 1)
+    if eh_primo(n):
+        return primos_anteriores + [n]
+    else:
+        return primos_anteriores
 
 def primos_linear(n):
     if n <= 1:
